@@ -21,7 +21,7 @@ app.use((req,res,next)=>{
 const productRoutes=require('./api/routes/products');
 const ordersRoutes=require('./api/routes/orders');
 const userRoutes=require('./api/routes/users');
-//const nodemon = require('nodemon');
+const nodemon = require('nodemon');
 
 app.use(morgan('dev'));
 app.use('/uploads',express.static('uploads'));
