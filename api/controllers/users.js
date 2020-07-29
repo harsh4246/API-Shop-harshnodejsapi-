@@ -84,7 +84,7 @@ exports.users_login=(req,res,next)=>{
                         email: result[0].email,
                         userId: result._id
                     },
-                    "secretharsh",
+                    process.env.JWT_KEY,
                     {
                         expiresIn:'1h'
                     }

@@ -6,7 +6,7 @@ exports.products_get_all=(req,res,next)=>{
     .select('name price _id productImage')
     .exec()
     .then(docs=>{
-        //console.log(doc);
+        
         if (docs){
             const response={
                 count:docs.length,
