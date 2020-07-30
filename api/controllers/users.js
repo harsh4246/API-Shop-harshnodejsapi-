@@ -30,7 +30,7 @@ exports.users_signup=(req,res,next)=>{
                     _id:mongoose.Types.ObjectId(),
                     email:req.body.email,
                     password:hash,
-                    profilePic: req.file.path,
+                    profilePic:  req.params.profilePic,
                     name:req.body.name
 
                     });
