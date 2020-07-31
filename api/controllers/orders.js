@@ -15,7 +15,7 @@ exports.orders_get_all=(req,res,next)=>{
                 return {
                     _id:doc._id,
                     product:doc.product,
-                    User:doc.email,
+                    user:doc.email,
                     quantity:doc.quantity,
                     requests:{
                         type:'GET',
