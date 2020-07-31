@@ -20,17 +20,17 @@ const profilePic = multer({
     storage:storage2,
     limits:{
         fileSize: 1024*1024*5
-    },
-    fileFilter: function(req,file,cb){
-        if(file.mimetype==='image/jpeg' || file.mimetype==='image/png'){
-            console.log('file is clean');
-            cb(null, true);
-        }
-        else{
-            console.log('file is not clean');
-            cb(null, false);
-        }
     }
+    // fileFilter: function(req,file,cb){
+    //     if(file.mimetype==='image/jpeg' || file.mimetype==='image/png'){
+    //         console.log('file is clean');
+    //         cb(null, true);
+    //     }
+    //     else{
+    //         console.log('file is not clean');
+    //         cb(null, false);
+    //     }
+    // }
 
 })
 
