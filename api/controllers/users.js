@@ -18,7 +18,7 @@ exports.users_signup=(req,res,next)=>{
 
 
                 if(err){
-                    return res.status(500).json({
+                    return res.status(404).json({
                         error:err
                     })
 
