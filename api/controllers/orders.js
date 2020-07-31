@@ -4,7 +4,7 @@ const mongoose=require('mongoose');
 
 
 exports.orders_get_all=(req,res,next)=>{
-    Order.find({email:req.userData.email})
+    Order.find({user:req.userData.email})
     .populate('product')
     .exec()
     .then((docs) => {
@@ -26,7 +26,7 @@ exports.orders_get_all=(req,res,next)=>{
         });
     }).catch((err) => {
         console.log(err);
-        res/status(500).json(err);
+        res.status(500).json(err);
     });
 
 }
