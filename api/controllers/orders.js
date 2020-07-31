@@ -4,7 +4,7 @@ const mongoose=require('mongoose');
 
 
 exports.orders_get_all=(req,res,next)=>{
-    Order.find()
+    Order.find({email:userData.email})
     .populate('product')
     .exec()
     .then((docs) => {
@@ -15,7 +15,7 @@ exports.orders_get_all=(req,res,next)=>{
                 return {
                     _id:doc._id,
                     product:doc.product,
-                    User:req.userData,
+                    User:doc.email,
                     quantity:doc.quantity,
                     requests:{
                         type:'GET',
