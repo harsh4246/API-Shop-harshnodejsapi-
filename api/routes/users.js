@@ -35,7 +35,7 @@ const profilePic = multer({
 })
 
 const usersController=require('../controllers/users');
-const checkAuth = require('../middleware-auth/checkAuth');
+//const checkAuth = require('../middleware-auth/checkAuth');
 
 
 router.post('/signup',profilePic.single('profilePic'),usersController.users_signup);
