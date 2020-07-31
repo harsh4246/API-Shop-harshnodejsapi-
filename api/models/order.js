@@ -7,6 +7,9 @@ const orderSchema=mongoose.Schema({
         ref: 'Product',
         required: true
     },
+    user:{
+        type:String
+    },
 
     quantity: {
         type: Number,

@@ -45,7 +45,8 @@ exports.orders_create_one=(req,res,next)=>{
         const order=new Order({
             _id:mongoose.Types.ObjectId(),
             quantity: req.body.quantity,
-            product: req.body.productId
+            product: req.body.productId,
+            user:req.userData.email 
         });
 
 
