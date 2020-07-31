@@ -37,13 +37,13 @@ exports.users_signup=(req,res,next)=>{
 
                     user.save()
                     .then(result=>{
-                        console.log(result);
+                        
                         res.status(201).json({
                             message:'user created',
                             email:result.email,
                             profilePic: req.file.path,
                             further_steps: 'please go to the login page url provided and in body provide the info on the fields listed.',
-                            url:'http://localhost:3000/users/login/',
+                            url:'https://harshnodejsapi.herokuapp.com/users/login/',
                             user:result
 
                         })
@@ -107,12 +107,12 @@ exports.users_login=(req,res,next)=>{
 
                         useful_urls:{
 
-                            get_all_products:'http://localhost:3000/products/',
-                            products_get_one_details:'http://localhost:3000/products/:productId',
-                            orders_get_all:'http://localhost:3000/orders/',
-                            orders_create_one:'http://localhost:3000/orders/',
-                            orders_get_order_details:'http://localhost:3000/orders/:orderId',
-                            orders_delete_order:'http://localhost:3000/orders/:orderId'
+                            get_all_products:'https://harshnodejsapi.herokuapp.com/products/',
+                            products_get_one_details:'https://harshnodejsapi.herokuapp.com/products/:productId',
+                            orders_get_all:'https://harshnodejsapi.herokuapp.com/orders/',
+                            orders_create_one:'https://harshnodejsapi.herokuapp.com/orders/',
+                            orders_get_order_details:'https://harshnodejsapi.herokuapp.com/orders/:orderId',
+                            orders_delete_order:'https://harshnodejsapi.herokuapp.com/orders/:orderId'
                         }
 
 

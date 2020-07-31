@@ -19,13 +19,13 @@ exports.orders_get_all=(req,res,next)=>{
                     quantity:doc.quantity,
                     requests:{
                         type:'GET',
-                        url: 'http://localhost:3000/orders/'+ doc._id
+                        url: 'https://harshnodejsapi.herokuapp.com/orders/'+ doc._id
                     }
                 }
             })
         });
     }).catch((err) => {
-        console.log(err);
+        
         res.status(500).json(err);
     });
 
@@ -61,10 +61,10 @@ exports.orders_create_one=(req,res,next)=>{
                         _id:result._id,
                         product:result.product,
                         quantity:result.quantity,
-                        user:req.userData.email,
+                        user:result.user,
                         requests:{
                             type:'GET',
-                            url: 'http://localhost:3000/orders/'+ result._id
+                            url: 'https://harshnodejsapi.herokuapp.com/orders/'+ result._id
                         }
                     }
 
@@ -74,7 +74,7 @@ exports.orders_create_one=(req,res,next)=>{
     })
 
     .catch((err) => {
-        console.log(err);
+        
         res/status(500).json(err);
     });
 

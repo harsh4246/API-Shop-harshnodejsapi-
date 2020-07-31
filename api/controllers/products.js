@@ -10,6 +10,7 @@ exports.products_get_all=(req,res,next)=>{
         if (docs){
             const response={
                 count:docs.length,
+                user:req.userData.email,
                 products:docs.map(doc=>{
                     return{
                         name:doc.name,
@@ -18,7 +19,7 @@ exports.products_get_all=(req,res,next)=>{
                         productImage:doc.productImage,
                         url:{
                             type : 'Get',
-                            url : 'http://localhost:3000/products/'+doc._id
+                            url : 'https://harshnodejsapi.herokuapp.com/products/'+doc._id
                         }
                     }
                 })
@@ -31,7 +32,7 @@ exports.products_get_all=(req,res,next)=>{
         }
     })
     .catch(err=>{
-        //console.log(err);
+        
         res.status(500).json({error:err});
     })
 }
@@ -39,22 +40,23 @@ exports.products_get_all=(req,res,next)=>{
 
 exports.products_create_one=(req,res,next)=>{
 
-    console.log(req.file);
+    
     const product=new Product({
         _id:new mongoose.Types.ObjectId,
         name:req.body.name,
         price:req.body.price,
-        productImage: req.file.path
+        productImage: req.file.path,
+        productDescription:req.body.productDescription
     });
 
     product.save().then(result=>{
-        console.log(result);
+        
         res.status(201).json({
-            message: "handling the /products post request",
+            
             createdProduct: result
         });
     }).catch(err=>{
-        console.log(err);
+        
         res.status(500).json({
             error:err
         });
@@ -68,16 +70,19 @@ exports.products_get_one=(req,res,next)=>{
     const id=req.params.productId;
     Product.findById(id).exec()
     .then(doc=>{
-        //console.log(doc);
+        
         if (doc){
-            res.status(200).json(doc);
+            res.status(200).json({
+                product:doc,
+                user:req.userData.email
+            });
         }
         else{
             res.status(404).json({message:"not found"});
         }
     })
     .catch(err=>{
-        //console.log(err);
+        
         res.status(500).json({error:err});
     })
 }
@@ -89,11 +94,11 @@ exports.products_edit_one=(req,res,next)=>{
         upDateOps[ops.propName] = ops.value;
     }
     Product.update({_id:id},{$set:upDateOps}).exec().then(result=>{
-        console.log(result);
+        
         res.status(200).json(result);
     })
     .catch(err=>{
-        console.log(err);
+        
         res.status(500).json({error:err});
     });
 }
@@ -103,7 +108,7 @@ exports.products_delete_one=(req,res,next)=>{
     Product.remove({_id:id}).exec().then(result=>{
         res.status(200).json(result);
     }).catch(err=>{
-        console.log(err);
+        
         res.status(500).json({error:err});
     });
 }
