@@ -61,6 +61,7 @@ exports.orders_create_one=(req,res,next)=>{
                         _id:result._id,
                         product:result.product,
                         quantity:result.quantity,
+                        user:req.userData.email,
                         requests:{
                             type:'GET',
                             url: 'http://localhost:3000/orders/'+ result._id
