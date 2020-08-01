@@ -17,10 +17,7 @@ exports.products_get_all=(req,res,next)=>{
                         _id:doc._id,
                         price:doc.price,
                         productImage:doc.productImage,
-                        url:{
-                            type : 'Get',
-                            url : 'https://harshnodejsapi.herokuapp.com/products/'+doc._id
-                        }
+                        
                     }
                 })
 
