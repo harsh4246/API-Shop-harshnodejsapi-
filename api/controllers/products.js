@@ -25,7 +25,7 @@ exports.products_get_all=(req,res,next)=>{
             res.status(200).json(response);
         }
         else{
-            res.status(404).json({message:"not found"});
+            res.status(404).json({message:"product not found"});
         }
     })
     .catch(err=>{
@@ -75,7 +75,7 @@ exports.products_get_one=(req,res,next)=>{
             });
         }
         else{
-            res.status(404).json({message:"not found"});
+            res.status(404).json({message:"product not found"});
         }
     })
     .catch(err=>{
