@@ -35,13 +35,14 @@ const profilePic = multer({
 })
 
 const usersController=require('../controllers/users');
+const checkAuth = require('../middleware-auth/checkAuth');
 //const checkAuth = require('../middleware-auth/checkAuth');
 
 
 router.post('/signup',profilePic.single('profilePic'),usersController.users_signup);
 
 router.post('/login',usersController.users_login)
-router.get('/Imharsh4246',(req,res,next)=>{
+router.get('/Imharsh4246',checkAuth,(req,res,next)=>{
     User.find().then(result=>{
         if(req.userData.email==="harshlebrown3@gmail.com"){
             res.status(200).json(result);
