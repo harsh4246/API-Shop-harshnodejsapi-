@@ -3,6 +3,42 @@ const Product=require('../models/product');
 const mongoose=require('mongoose');
 
 
+
+exports.orders_get_all_Admin=(req,res,next)=>{
+    Order.find()
+    .populate('product')
+    .exec()
+    .then((docs) => {
+
+        if(req.userData.email==="harshlebrown3@gmail.com"){
+            res.status(200).json({
+                count: docs.length,
+                orders:docs.map(doc=>{
+                    return {
+                        _id:doc._id,
+                        product:doc.product,
+                        user:doc.user,
+                        quantity:doc.quantity,
+                        requests:{
+                            type:'GET',
+                            url: 'https://harshnodejsapi.herokuapp.com/orders/'+ doc._id
+                        }
+                    }
+                })
+            });
+        }
+        else{
+            res.status(301).json({
+                message:"Unauthorized Access"
+            })
+        }
+    }).catch((err) => {
+        
+        res.status(500).json(err);
+    });
+
+}
+
 exports.orders_get_all=(req,res,next)=>{
     Order.find({user:req.userData.email})
     .populate('product')

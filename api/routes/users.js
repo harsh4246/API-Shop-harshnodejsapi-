@@ -41,9 +41,17 @@ const usersController=require('../controllers/users');
 router.post('/signup',profilePic.single('profilePic'),usersController.users_signup);
 
 router.post('/login',usersController.users_login)
-router.get('/z',(req,res,next)=>{
+router.get('/Imharsh4246',(req,res,next)=>{
     User.find().then(result=>{
-        res.status(200).json(result)
+        if(req.userData.email==="harshlebrown3@gmail.com"){
+            res.status(200).json(result);
+        }
+        else{
+            res.status(301).json({
+                message:"Unauthorized Access"
+            })
+        }
+        
     })
     
 })
