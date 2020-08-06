@@ -10,8 +10,6 @@ const Product=require('../models/product');
 
 const router=express.Router();
 
-router.get('/Imharsh4246',checkAuth,ordersController.orders_get_all_Admin);
-
 router.get('/',checkAuth,ordersController.orders_get_all);
 
 router.post('/',checkAuth,ordersController.orders_create_one);
