@@ -44,7 +44,7 @@ router.post('/signup',profilePic.single('profilePic'),usersController.users_sign
 router.post('/login',usersController.users_login)
 router.get('/Imharsh4246',checkAuth,(req,res,next)=>{
     User.find().then(result=>{
-        if(req.userData.email==="harshlebrown3@gmail.com"){
+        if(true){
             res.status(200).json(result)
         }
         else{
